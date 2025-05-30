@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - ./datasets:/docker-entrypoint-initdb.d
+      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+    env_file:
+      - .env
+
+  backend:
+    build:
+      context: ./ex1
+      args:
+        - BACKEND_PORT=${BACKEND_PORT}
+        - DATABASE=${DATABASE}
+        - MONGO_PORT=${MONGO_PORT}
+    container_name: backend
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    depends_on:
+      - mongodb
+    command: ["npm", "start"]
+
+  frontend:
+    build:
+      context: ./ex2
+      args:
+        - FRONTEND_PORT=${FRONTEND_PORT}
+        - BACKEND_PORT=${BACKEND_PORT}
+    container_name: frontend
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    depends_on:
+      - backend
+    command: ["npm", "start"]
+
+networks:
+  default:
+    driver: bridge

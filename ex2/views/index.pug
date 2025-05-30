@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Edições Eurovisão
+  table
+    thead
+      tr
+        th ID
+        th Ano
+        th Organizador
+        th Vencedor
+    tbody
+      each ed in edicoes
+        tr
+          td
+            a(href=`/${ed._id}`)= ed._id
+          td= ed.anoEdição
+          td
+            a(href=`/paises/${ed.organizacao}`)= ed.organizacao
+          td
+            if ed.vencedor
+              a(href=`/paises/${ed.vencedor}`)= ed.vencedor
+            else
+              | -

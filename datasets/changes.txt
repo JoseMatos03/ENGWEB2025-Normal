@@ -1,0 +1,2 @@
+1. O dataset original foi convertido num formato JSON Array.
+2. Os campos "id" foram renomeados para "_id".

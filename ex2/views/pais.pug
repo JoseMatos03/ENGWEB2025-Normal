@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1 País #{pais}
+
+  h2 Participações
+  table
+    thead
+      tr
+        th ID Edição
+        th Ano
+        th Música
+        th Intérprete
+        th Venceu
+    tbody
+      each part in participations
+        tr
+          td
+            a(href=`/${part.id}`)= part.id
+          td= part.anoEdição
+          td= part.titulo
+          td= part.interprete
+          td= part.venceu ? 'Sim' : 'Não'
+
+  h2 Organizou
+  table
+    thead
+      tr
+        th ID Edição
+        th Ano
+    tbody
+      each ano in organizou
+        - const edId = 'ed' + ano
+        tr
+          td
+            a(href=`/${edId}`)= edId
+          td= ano
+
+  p
+    a(href='/') Voltar à página principal

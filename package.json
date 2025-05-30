@@ -1,0 +1,15 @@
+{
+  "name": "engwebtemplate",
+  "version": "1.0.0",
+  "description": "Este projeto consiste numa aplicação web feita para o teste da Unidade Curricular de Engenharia Web.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "docker compose up --build --force-recreate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

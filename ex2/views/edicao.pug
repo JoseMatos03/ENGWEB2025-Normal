@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 Edição #{edicao._id}
+  p
+    strong Ano:
+    | #{edicao.anoEdição}
+  p
+    strong Organizador:
+    a(href=`/paises/${edicao.organizacao}`)= edicao.organizacao
+  p
+    strong Vencedor:
+    if edicao.vencedor
+      a(href=`/paises/${edicao.vencedor}`)= edicao.vencedor
+    else
+      | N/A
+
+  h2 Músicas
+  table
+    thead
+      tr
+        th Nome
+        th Intérprete
+        th País
+    tbody
+      each m in edicao.musicas
+        tr
+          td= m.título
+          td= m.intérprete
+          td= m.país
+
+  p
+    a(href='/') Voltar à página principal
