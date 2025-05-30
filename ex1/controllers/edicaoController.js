@@ -6,7 +6,7 @@ const edicoesController = {
     try {
       const filter = req.query.org ? { organizacao: req.query.org } : {};
       const eds = await Edicao.find(filter)
-        .select("anoEdição organizacao vencedor _id")
+        .select("anoEdição organizacao vencedor _id musicas")
         .lean();
       res.json(eds);
     } catch (err) {
