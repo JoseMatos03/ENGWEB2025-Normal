@@ -15,7 +15,9 @@ Antes de executar o projeto, certifica-te de que tens os seguintes requisitos in
 
 1. **Clonar o repositório**
 
-   A partir do zip enviado por email.
+   ```sh
+   git clone https://github.com/JoseMatos03/ENGWEB2025-Normal.git
+   ```
 
 2. **Instalar as dependências**
 
